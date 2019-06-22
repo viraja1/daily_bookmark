@@ -32,7 +32,6 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.json$/, use: 'json-loader' },
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
       {
@@ -43,4 +42,4 @@ module.exports = {
     ]
   },
   plugins: [HtmlWebpackPluginConfig, ManifestAssetPlugin, IconAssetPlugin]
-}
+};
