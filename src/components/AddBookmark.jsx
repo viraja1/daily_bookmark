@@ -10,6 +10,7 @@ export default class AddBookmark extends Component {
     return (
       <div className="new-bookmark">
         <div className="col-md-8">
+          <br/>
           <p className="h3">Add New Bookmark</p>
           <br/>
           <input type="text" className="form-control"

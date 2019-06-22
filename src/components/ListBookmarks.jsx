@@ -18,6 +18,7 @@ export default class ListBookmarks extends Component {
     const {bookmarks, isLoading, tag, deleteBookmark} = this.props;
     return (
       <div className="col-md-12 bookmarks">
+        <br/>
         <p className="h3" style={{textTransform: 'capitalize'}}>{tag} Bookmarks</p>
         <br/>
         {isLoading && <span>Fetching Bookmarks...</span>}
