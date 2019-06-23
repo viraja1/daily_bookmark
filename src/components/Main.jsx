@@ -264,7 +264,7 @@ export default class Main extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(prevState, this.state);
+    //console.log(prevState, this.state);
   }
 
 }
