@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 
 // copy manifest.json to the path: 'public/build'
@@ -43,5 +42,5 @@ module.exports = {
       { test: /\.css$/, loader: 'style-loader!css-loader' }
     ]
   },
-  plugins: [new TerserPlugin(), HtmlWebpackPluginConfig, ManifestAssetPlugin, IconAssetPlugin, new CompressionPlugin()],
+  plugins: [HtmlWebpackPluginConfig, ManifestAssetPlugin, IconAssetPlugin, new CompressionPlugin()],
 };
