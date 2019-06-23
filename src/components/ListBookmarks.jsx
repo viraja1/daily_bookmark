@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import {Button, Card, CardColumns} from 'react-bootstrap';
+import {Button, Card} from 'react-bootstrap';
 import {FaTrash} from 'react-icons/fa';
+import StackGrid from 'react-stack-grid';
+import sizeMe from 'react-sizeme';
 
-export default class ListBookmarks extends Component {
+class ListBookmarks extends Component {
   constructor(props) {
     super(props);
   }
@@ -15,14 +17,15 @@ export default class ListBookmarks extends Component {
   }
 
   render() {
-    const {bookmarks, isLoading, tag, deleteBookmark} = this.props;
+    const {bookmarks, isLoading, tag, deleteBookmark, size} = this.props;
+    const { width} = size;
     return (
       <div className="col-md-12 bookmarks">
         <br/>
         <p className="h3" style={{textTransform: 'capitalize'}}>{tag} Bookmarks</p>
         <br/>
         {isLoading && <span>Fetching Bookmarks...</span>}
-        <CardColumns>
+        <StackGrid columnWidth={width <= 768 ? '100%' : '33.33%'}>
           {bookmarks.filter(bookmark => bookmark.tags.includes(tag) || tag === "all").map((bookmark) => (
 
             <Card key={bookmark.id}>
@@ -42,9 +45,11 @@ export default class ListBookmarks extends Component {
             </Card>
             )
           )}
-        </CardColumns>
+        </StackGrid>
         {!isLoading && !bookmarks.length && <span>Add a bookmark to get started</span>}
       </div>
     )
   }
 }
+
+export default sizeMe({monitorHeight: true})(ListBookmarks);
