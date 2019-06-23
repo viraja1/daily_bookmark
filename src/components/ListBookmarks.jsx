@@ -25,7 +25,7 @@ class ListBookmarks extends Component {
         <p className="h3" style={{textTransform: 'capitalize'}}>{tag} Bookmarks</p>
         <br/>
         {isLoading && <span>Fetching Bookmarks...</span>}
-        <StackGrid columnWidth={width <= 768 ? '100%' : '33.33%'} gutterWidth={10} gutterHeight={10}>
+        <StackGrid columnWidth={width <= 768 ? '100%' : '33.33%'} gutterWidth={10} gutterHeight={10} duration={0}>
           {bookmarks.filter(bookmark => bookmark.tags.includes(tag) || tag === "all").map((bookmark) => (
 
             <Card key={bookmark.id + width}>
