@@ -10,7 +10,7 @@ export default class Signin extends Component {
     const {handleSignIn} = this.props;
     return (
       <div className="panel-landing" id="section-1">
-        <Card style={{width: "60%", margin:'5%'}} className="text-center">
+        <Card style={{width: "50%", margin:'5%'}} className="text-center">
           <Card.Img variant="top" src="bookmark_home.png"/>
           <Card.Body>
             <Card.Title>Daily Bookmark</Card.Title>
