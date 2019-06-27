@@ -6,7 +6,9 @@ const CompressionPlugin = require("compression-webpack-plugin");
 // this will allow for the authRequest to see the file at www.example.com/manifest.json
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ManifestAssetPlugin = new CopyWebpackPlugin([ { from: 'src/assets/manifest.json', to: 'manifest.json' } ]);
-const IconAssetPlugin = new CopyWebpackPlugin([ { from: 'src/images/icon.png', to: 'icon.png' } ]);
+const IconAssetPlugin = new CopyWebpackPlugin([ { from: 'src/images/icon.png', to: 'icon.png' },
+                                                { from: 'src/images/bookmark_home.png', to: 'bookmark_home.png' } ]);
+
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({

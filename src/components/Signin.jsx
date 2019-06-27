@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Card, Button} from 'react-bootstrap';
 
 export default class Signin extends Component {
   constructor(props) {
@@ -9,16 +10,16 @@ export default class Signin extends Component {
     const {handleSignIn} = this.props;
     return (
       <div className="panel-landing" id="section-1">
-        <h1 className="landing-heading text-white">Daily Bookmark</h1>
-        <p className="lead">
-          <button
-            className="btn btn-primary btn-lg"
-            id="signin-button"
-            onClick={handleSignIn.bind(this)}
-          >
-            Sign In with Blockstack
-          </button>
-        </p>
+        <Card style={{width: "60%", margin:'5%'}} className="text-center">
+          <Card.Img variant="top" src="bookmark_home.png"/>
+          <Card.Body>
+            <Card.Title>Daily Bookmark</Card.Title>
+            <Card.Text>
+              Simple app for your daily bookmark needs!
+            </Card.Text>
+            <Button variant="primary" onClick={handleSignIn.bind(this)}>Sign In with Blockstack</Button>
+          </Card.Body>
+        </Card>
       </div>
     )
   }
