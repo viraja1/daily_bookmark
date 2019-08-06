@@ -40,7 +40,7 @@ export default class AddBookmark extends Component {
         </div>
         <div className="col-md-12">
           <button
-            className="btn btn-primary"
+            className="btn btn-secondary"
             onClick={e => handleNewBookmarkSubmit(e, this.props.history)}
           >
             Submit
