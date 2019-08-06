@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Button, Card} from 'react-bootstrap';
-import {FaTrash} from 'react-icons/fa';
+import {Card} from 'react-bootstrap';
+import {FaTrash, FaExternalLinkAlt} from 'react-icons/fa';
 import StackGrid from 'react-stack-grid';
 import sizeMe from 'react-sizeme';
 
@@ -57,7 +57,7 @@ class ListBookmarks extends Component {
                   Tag: {this.truncate(bookmark.tags, 100)}
                 </Card.Text>
                 }
-                <Button variant="secondary" href={bookmark.url.indexOf('http') === -1 ? "//" + bookmark.url : bookmark.url} target="_blank">View</Button>
+                <a href={bookmark.url.indexOf('http') === -1 ? "//" + bookmark.url : bookmark.url} target="_blank"><FaExternalLinkAlt/></a>
                 <div style={{float: 'right'}}>
                   <FaTrash onClick={e => window.confirm("Are you sure you want to delete this bookmark?") && deleteBookmark(e, bookmark.id)} style={{cursor: 'pointer'}}/>
                 </div>
