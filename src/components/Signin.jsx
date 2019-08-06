@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Card, Button} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 
 export default class Signin extends Component {
   constructor(props) {
@@ -9,17 +9,18 @@ export default class Signin extends Component {
   render() {
     const {handleSignIn} = this.props;
     return (
-      <div className="panel-landing" id="section-1">
-        <Card style={{width: "50%", margin:'5%'}} className="text-center">
-          <Card.Img variant="top" src="bookmark_home.png"/>
-          <Card.Body>
-            <Card.Title>Daily Bookmark</Card.Title>
-            <Card.Text>
-              Simple app for your daily bookmark needs!
-            </Card.Text>
-            <Button variant="primary" onClick={handleSignIn.bind(this)}>Sign In with Blockstack</Button>
-          </Card.Body>
-        </Card>
+      <div className="panel-landing  h-100 d-flex" id="section-1">
+        <div className="jumbotron" style={{margin: "auto", textAlign: "center", padding: "5%"}}>
+          <div>
+            <p className="h1">Daily Bookmark</p>
+          </div>
+          <div>
+            <br/>
+            <p>Simple secure app for your daily bookmark needs</p>
+          </div>
+          <br/>
+          <Button variant="secondary btn-lg" onClick={handleSignIn.bind(this)}>Login with Blockstack</Button>
+        </div>
       </div>
     )
   }
