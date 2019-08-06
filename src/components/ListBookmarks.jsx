@@ -34,12 +34,14 @@ class ListBookmarks extends Component {
                 <Card.Text>
                   {this.truncate(bookmark.description, 200)}
                 </Card.Text>
+                {bookmark.tags.length > 0 &&
                 <Card.Text>
                   Tag: {this.truncate(bookmark.tags, 100)}
                 </Card.Text>
-                <Button variant="primary" href={bookmark.url} target="_blank">View</Button>
+                }
+                <Button variant="primary" href={bookmark.url.indexOf('http') === -1 ? "//" + bookmark.url : bookmark.url} target="_blank">View</Button>
                 <div style={{float: 'right'}}>
-                  <FaTrash onClick={e => deleteBookmark(e, bookmark.id)} style={{cursor: 'pointer'}}/>
+                  <FaTrash onClick={e => window.confirm("Are you sure you want to delete this bookmark?") && deleteBookmark(e, bookmark.id)} style={{cursor: 'pointer'}}/>
                 </div>
               </Card.Body>
             </Card>

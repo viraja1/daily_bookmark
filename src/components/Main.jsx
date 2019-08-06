@@ -56,35 +56,34 @@ export default class Main extends Component {
       return bookmark.id !== id;
     });
     const options = {encrypt: true};
+    this.setState({
+       bookmarks: updatedBookmarks
+    });
     userSession.putFile('bookmarks.json', JSON.stringify(updatedBookmarks), options)
       .then(() => {
-        this.setState({
-          bookmarks: updatedBookmarks
-        })
+
       })
 
   }
 
   handleNewBookmarkSubmit(event, history) {
     let newBookmark = this.state.newBookmark;
-    let url_regex = /(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*))/g;
+    let url_regex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,24}(:[0-9]{1,5})?(\/.*)?$/g;
     if (typeof newBookmark.title === "undefined" || newBookmark.title.trim() === "") {
       this.setState({error: "Valid title is required"});
       return;
     }
     if (typeof newBookmark.description === "undefined" || newBookmark.description.trim() === "") {
-      this.setState({error: "Valid description is required"});
-      return;
+      newBookmark.description = '';
     }
     if (typeof newBookmark.url === "undefined" || newBookmark.url.trim() === "" || !newBookmark.url.match(url_regex)) {
       this.setState({error: "Valid url is required"});
       return;
     }
     if (typeof newBookmark.tags[0] === "undefined" || newBookmark.tags[0].trim() === "") {
-      this.setState({error: "Valid tag is required"});
-      return;
+      newBookmark.tags = [];
     }
-    if (newBookmark.tags[0].trim().length > 100) {
+    if (newBookmark.tags.length > 0 && newBookmark.tags[0].trim().length > 100) {
       this.setState({error: "Tag length should not exceed more than 100 characters"});
       return;
     }
