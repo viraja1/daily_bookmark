@@ -7,6 +7,9 @@ import sizeMe from 'react-sizeme';
 class ListBookmarks extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      searchFilter: ''
+    }
   }
 
   truncate(s, max) {
@@ -16,6 +19,10 @@ class ListBookmarks extends Component {
     return s;
   }
 
+  setSearchFilter(e){
+    this.setState({searchFilter: e.target.value})
+  }
+
   render() {
     const {bookmarks, isLoading, tag, deleteBookmark, size} = this.props;
     const { width} = size;
@@ -23,10 +30,21 @@ class ListBookmarks extends Component {
       <div className="col-md-12 bookmarks">
         <br/>
         <p className="h3" style={{textTransform: 'capitalize'}}>{tag} Bookmarks</p>
-        <br/>
         {isLoading && <span>Fetching Bookmarks...</span>}
+        {bookmarks.length > 0 &&
+          <div style={{float: "right"}}>
+            <input type="text" className="form-control-sm" placeholder="Search" onChange={this.setSearchFilter.bind(this)}/>
+          </div>
+        }
+        <br/>
+        <br/>
         <StackGrid columnWidth={width <= 768 ? '100%' : '33.33%'} gutterWidth={10} gutterHeight={10} duration={0}>
-          {bookmarks.filter(bookmark => bookmark.tags.includes(tag) || tag === "all").map((bookmark) => (
+          {bookmarks
+            .filter(bookmark => bookmark.tags.includes(tag) || tag === "all")
+            .filter(bookmark => bookmark.title.toLowerCase().search(this.state.searchFilter.toLowerCase().trim()) !== -1
+              ||  bookmark.description.toLowerCase().search(this.state.searchFilter.toLowerCase().trim()) !== -1
+              || this.state.searchFilter.trim() === "" )
+            .map((bookmark) => (
 
             <Card key={bookmark.id + width}>
               <Card.Body>
