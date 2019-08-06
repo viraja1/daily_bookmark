@@ -30,9 +30,9 @@ class ListBookmarks extends Component {
 
             <Card key={bookmark.id + width}>
               <Card.Body>
-                <Card.Title style={{textTransform: 'capitalize'}}>{this.truncate(bookmark.title, 100)}</Card.Title>
+                <Card.Title style={{textTransform: 'capitalize'}}>{this.truncate(bookmark.title, 1000)}</Card.Title>
                 <Card.Text>
-                  {this.truncate(bookmark.description, 200)}
+                  {this.truncate(bookmark.description, 1000)}
                 </Card.Text>
                 {bookmark.tags.length > 0 &&
                 <Card.Text>
