@@ -2,22 +2,6 @@
   background-color: #535466;
 }
 
-
-.panel-landing {
-  display: flex;
-  flex-direction: column;
-  margin-right: auto;
-  margin-left: auto;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  position: fixed;
-  overflow: auto;
-
-  background-color: #db3d44;
-  background-repeat: repeat;
-}
-
 html, body {
   height: 100%;
 }
